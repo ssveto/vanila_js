@@ -37,6 +37,8 @@ const checkInput = () => {
 }
 
 
+
+
 const cleanString = (str) => {
     const regex = /[a-zA-Z0-9]+/gmi;
     let match = str.match(regex).join("").toLowerCase();
@@ -47,3 +49,9 @@ const cleanString = (str) => {
 
 
 checkBtn.addEventListener("click", checkInput)
+inputP.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        checkInput();
+    }
+})
