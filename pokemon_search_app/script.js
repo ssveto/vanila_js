@@ -7,7 +7,7 @@ const typeDisplay = document.getElementById("types");
 const nameDisplay = document.getElementById("pokemon-name");
 const idDisplay = document.getElementById("pokemon-id");
 const sprite = document.getElementById("poke-img")
-
+const showDiv = document.querySelector(".info-first-part")
 
 
 
@@ -18,7 +18,6 @@ const fetchData2 = async (url) => {
     try {
         const res = await fetch(url)
         const data = await res.json()
-        console.log(data)
         updateStats(data)
     } catch (err) {
         console.log(err)
@@ -27,6 +26,8 @@ const fetchData2 = async (url) => {
 } 
 
 const updateStats = (data) => {
+    typeDisplay.innerHTML = "";
+    
     const { height, id, name, weight, types, sprites, stats } = data;
     const { front_default } = sprites
     stats.forEach(item => {
@@ -35,22 +36,21 @@ const updateStats = (data) => {
     })
     
     
-    types.forEach((item) => {
-        typeDisplay.innerHTML += `<div>${item.type.name}</div>`
-    })
+    
     sprite.innerHTML = `<img src="${front_default}" class="img" id="sprite"></img>`;
     weightDisplay.textContent = "weight: " + weight
     heightDisplay.textContent = "height: " + height
     nameDisplay.textContent = name.toUpperCase()
     idDisplay.textContent = `#${id}`
 
-
-
+    showDiv.classList.remove("hidden")
+ 
+    types.forEach((item) => {
+        typeDisplay.innerHTML += `<div>${item.type.name}</div>`
+    })
 }
 
-const clear = () => {
-    typeDisplay.innerHTML = "";
-}
+
 
 
 
@@ -90,6 +90,5 @@ const showPoke = (data) => {
 
 
 searchBtn.addEventListener("click", () => {
-    clear();
     fetchData();
 })

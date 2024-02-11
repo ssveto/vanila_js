@@ -6,8 +6,12 @@
 }
 
 body {
-    width: 100 vw;
-    height: 100 vh;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     
 }
 
@@ -34,6 +38,10 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    max-height: 500px;
 }
 .search {
     display: flex;
@@ -43,24 +51,34 @@ header {
 }
 
 .display-info {
-    
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 5rem;
-    width: 25rem;
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    max-height: 300px;
 
 }
 
 #types {
-    position: relative;
-    left: 7rem;
-    bottom: 30%;
+    margin-left: 5em;
+    text-align: center;
 }
 
 .info-first-part {
-    width: 12rem;
-    height: 7rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    max-width: 200px;
+    height: 100%;
+    max-height: 250px;
+    border: 1px solid black;
+    padding: 0px;
+    border-radius: 10px;
 }
 
 tr {
@@ -68,6 +86,33 @@ tr {
 }
 
 .info-second-part {
-    width: 12rem;
-    height: 7rem;
+    width: 100%;
+    max-width: 200px;
+    height: 100%;
+    max-height: 250px;
+    border: 1px solid black;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+   
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    .display-info {
+        flex-direction: column;
+
+    } 
+    .info-second-part {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    header h1 {
+        font-size: 25px;
+    }
 }
